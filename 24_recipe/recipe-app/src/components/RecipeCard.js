@@ -7,8 +7,8 @@ export default function RecipeCard(props){
   <div>
     {
       props.recipes.map((recipe) => 
-    <div class="row" key={recipe.id}>
-      <div class="col-sm-6">
+    <div class="row p-4" key={recipe.id}>
+      <div class="w-30 col-md-8">
         <div class="card">
           <div class="card-body">
             <h5 class="card-title">{recipe.name}</h5>
@@ -23,7 +23,7 @@ export default function RecipeCard(props){
           </div>
         </div>
       </div>
-      <div class="col-sm-6">
+      <div class="w-30 col-md-8">
         <div class="card">
           <div class="card-body">
             <h5 class="card-title">Ingredients</h5>
@@ -31,7 +31,7 @@ export default function RecipeCard(props){
           </div>
         </div>
       </div>
-      <div class="col-sm-6">
+      <div class="w-30 col-md-8">
         <div class="card">
           <div class="card-body">
             <h5 class="card-title">Steps</h5>

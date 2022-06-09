@@ -20,7 +20,7 @@ export default function RecipeInput(props){
   }
   
   return (
-    <div>
+    <div class="text-left">
       <form onSubmit={onRecipeFormSubmit}>
         <div className="mb-3">
           <label for="exampleFormControlInput1" class="form-label">Name of Dish</label>

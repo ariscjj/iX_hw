@@ -43,7 +43,7 @@ export default function App() {
     setRecipes(recipes.filter((recipe) => recipe.id !== recipeId)); 
   }
   return (
-    <div className="container my-5">
+    <div className="container my-5 p-4">
       <div className="card card-body text-center">
         <h1>Cooking in Lisbon</h1>
         <hr></hr>
