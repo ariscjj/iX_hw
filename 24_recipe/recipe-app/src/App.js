@@ -43,11 +43,11 @@ export default function App() {
     setRecipes(recipes.filter((recipe) => recipe.id !== recipeId)); 
   }
   return (
-    <div className="container my-5 p-4">
-      <div className="card card-body text-center">
+    <div className="container my-5 p-4 text-center">
+      <div className="card card-body">
         <h1>Cooking in Lisbon</h1>
         <hr></hr>
-        <p>Here are the recipes that my friends and I have cooked so far in our trip to Lisbon!</p>
+        <p>Here are the recipes that my friends and I have cooked so far in our trip to Lisbon! Feel free to add more.</p>
         <RecipeInput onRecipeCreate={onRecipeCreate} />
       </div>
       <RecipeCard 

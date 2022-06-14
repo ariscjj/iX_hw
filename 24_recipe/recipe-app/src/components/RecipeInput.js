@@ -20,52 +20,76 @@ export default function RecipeInput(props){
   }
   
   return (
-    <div class="text-left">
+    <div class="fw-bold">
       <form onSubmit={onRecipeFormSubmit}>
-        <div className="mb-3">
-          <label for="exampleFormControlInput1" class="form-label">Name of Dish</label>
+        {/* <div class="row g-2"> */}
+        {/*   <div class="col-md"> */}
+        {/*     <div class="form-floating"> */}
+        {/*       <input */} 
+        {/*       id={name} */}
+        {/*       value={name} */}
+        {/*       onchange={(e) => setname(e.target.value)} */}
+        {/*       type="text" */} 
+        {/*       classname="form-control" */}
+        {/*       placeholder="name" /> */}
+        {/*       <label for={name}>Name of Dish</label> */}
+        {/*     </div> */}
+        {/*   </div> */}
+        {/*   <div class="col-md"> */}
+        {/*     <div class="form-floating"> */}
+        {/*       <input type="email" class="form-control" id="floatinginputgrid" placeholder="name@example.com" value="mdo@example.com"> */}
+        {/*       <label for="floatinginputgrid">email address</label> */}
+        {/*     </div> */}
+        {/*   </div> */}
+        {/* </div> */}
+
+    
+
+
+        <div classname="mb-3">
+          <label for="exampleformcontrolinput1" class="form-label">name of dish</label>
           <input 
             value={name}
-            onChange={(e) => setName(e.target.value)}
+            onchange={(e) => setname(e.target.value)}
             type="text" 
-            className="form-control"
-            placeholder="Name" />
+            classname="form-control"
+            placeholder="name" />
         </div>
-        <div className="mb-3">
-          <label for="exampleFormControlInput1" class="form-label">Description</label>
+        <div classname="mb-3">
+          <label for="exampleformcontrolinput1" class="form-label">description</label>
           <textarea 
             value={description}
-            onChange={(e) => setDescription(e.target.value)}
+            onchange={(e) => setdescription(e.target.value)}
             type="text" 
-            className="form-control"
-            placeholder="Description" />
+            classname="form-control"
+            placeholder="description" />
         </div>
-        <div className="mb-3">
-          <label for="exampleFormControlInput1" class="form-label">Date Made (mm/dd/yyyy)</label>
+        <div classname="mb-3">
+          <label for="exampleformcontrolinput1" class="form-label">date made (mm/dd/yyyy)</label>
           <input 
             value={date}
-            onChange={(e) => setDate(e.target.value)}
+            onchange={(e) => setdate(e.target.value)}
             type="text" 
-            className="form-control"
-            placeholder="Date" />
+            classname="form-control"
+            placeholder="date" />
         </div>
-      <div className="mb-3">
-          <label for="exampleFormControlInput1" class="form-label">Steps</label>
+      <div classname="mb-3">
+          <label for="exampleformcontrolinput1" class="form-label">steps</label>
           <input 
             value={steps}
-            onChange={(e) => setSteps(e.target.value)}
+            onchange={(e) => setsteps(e.target.value)}
             type="text" 
-            className="form-control"
-            placeholder="Steps" />
+            classname="form-control"
+            placeholder="steps" />
         </div>
-        <div className="mb-3">
-          <label for="exampleFormControlInput1" class="form-label">Ingredients</label>
+        <div classname="mb-3">
+          <label for="exampleformcontrolinput1" class="form-label">ingredients</label>
           <input 
             value={ingredients}
-            onChange={(e) => setIngredients(e.target.value)}
+            onchange={(e) => setingredients(e.target.value)}
             type="text" 
-            className="form-control"
-            placeholder="Ingredients" />
+            classname="form-control"
+            placeholder="ingredients" />
         </div>
 
         <button className="btn btn-outline-secondary" type="submit">
