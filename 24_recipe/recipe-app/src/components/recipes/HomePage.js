@@ -12,11 +12,10 @@ import RecipeService from '../../services/recipe.service';
 //import the Recipe class from the models folder 
 import { Recipe } from '../../models/recipe.js';
 import RecipeCard from './RecipeCard';
+import RecipeInput from './RecipeInput'; 
 
 
-
-
-export default function RecipePage() {
+export default function HomePage() {
   const [recipes, setRecipes] = useState([]);
 
   useEffect(() => {
@@ -43,6 +42,12 @@ export default function RecipePage() {
   }
   return (
     <div className="container my-5 p-4 text-center">
+        <div className="card card-body">
+          <h1>Cooking in Lisbon</h1>
+          <hr></hr>
+          <p>Here are the recipes that my friends and I have cooked so far in our trip to Lisbon! Feel free to add more.</p>
+          <RecipeInput onRecipeCreate={onRecipeCreate} />
+        </div>
         <RecipeCard 
           onRecipeRemove={onRecipeRemove}
           recipes={recipes} />

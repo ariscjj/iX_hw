@@ -25,7 +25,7 @@ export default function RecipeInput(props){
         <div className="mb-3">
           <label for="exampleformcontrolinput1" class="form-label">Name of Dish</label>
           <input 
-            value={description}
+            value={name}
             onChange={(e) => setName(e.target.value)}
             type="text" 
             className="form-control"

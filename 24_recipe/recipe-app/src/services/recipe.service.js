@@ -28,6 +28,7 @@ class RecipeService {
     return recipe; 
   }
 
+ 
   async fetchRecipes() {
     const collectionRef = collection(db, this.collection);
     const q = query(collectionRef);

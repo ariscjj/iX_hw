@@ -23,6 +23,9 @@ import { Recipe } from './models/recipe.js';
 // import RecipeCard from './components/recipes/RecipeCard';
 // import RecipeInput from './components/recipes/RecipeInput'; 
 import RecipePage from './components/recipes/RecipePage';
+import HomePage from './components/recipes/HomePage';
+import AddPage from './components/recipes/AddPage';
+
 import LoginPage from './components/auth/LoginPage';
 import RegisterPage from './components/auth/RegisterPage';
 
@@ -62,6 +65,13 @@ export default function App() {
     setRecipes([...recipes, recipe]); 
   }
 
+  async function onRecipeUpdate(name, description, date, steps, ingredients) {
+    // add the recipe to the recipes state 
+    const recipe = await RecipeService.updateRecipe(
+      new Recipe(null, name, description, date, steps, ingredients)); 
+    setRecipes([...recipes, recipe]); 
+  }
+
   async function onRecipeRemove(recipeId) {
     await RecipeService.deleteRecipe(recipeId); 
     setRecipes(recipes.filter((recipe) => recipe.id !== recipeId)); 
@@ -74,11 +84,14 @@ export default function App() {
           <Routes>
             <Route path='/' element={
               <RequireAuth user={user}>
-                <RecipePage />
+                <HomePage />
               </RequireAuth>
             } />
+            <Route path='' element={<HomePage />} />
             <Route path='/login' element={<LoginPage />} />
             <Route path='/register' element={<RegisterPage />} />
+            <Route path='/recipelist' element={<RecipePage />} />
+            <Route path='/add' element={<AddPage />} />
           </Routes>
           :
           <div className='mt-3 text-center'>

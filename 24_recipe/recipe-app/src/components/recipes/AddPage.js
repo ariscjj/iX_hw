@@ -12,11 +12,19 @@ import RecipeService from '../../services/recipe.service';
 //import the Recipe class from the models folder 
 import { Recipe } from '../../models/recipe.js';
 import RecipeCard from './RecipeCard';
+import RecipeInput from './RecipeInput'; 
+
+// import Navbar from './components/common/Navbar';
+// import RequireAuth from './components/common/RequireAuth';
+// import Spinner from './components/common/Spinner';
+
+import { auth } from '../../firebase/firebase';
+import { onAuthStateChanged } from 'firebase/auth';
 
 
 
 
-export default function RecipePage() {
+export default function HomePage() {
   const [recipes, setRecipes] = useState([]);
 
   useEffect(() => {
@@ -43,9 +51,12 @@ export default function RecipePage() {
   }
   return (
     <div className="container my-5 p-4 text-center">
-        <RecipeCard 
-          onRecipeRemove={onRecipeRemove}
-          recipes={recipes} />
+        <div className="card card-body">
+          <h1>Cooking in Lisbon</h1>
+          <hr></hr>
+          <p>Feel free to add more recipes</p>
+          <RecipeInput onRecipeCreate={onRecipeCreate} />
+        </div>
       </div>
   );
 }

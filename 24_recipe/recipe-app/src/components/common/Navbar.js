@@ -18,7 +18,7 @@ export default function Navbar(props){
   return(
     <nav className="navbar navbar-expand-lg bg-light">
       <div className="container-fluid">
-        <div className="navbar-brand">Navbar</div>
+        <div className="navbar-brand">COOKING</div>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <i className="bi bi-list"></i>
         </button>
@@ -32,18 +32,19 @@ export default function Navbar(props){
               props.user ?
                 <>
                   <li className="nav-item">
+                      <Link className="nav-link" to="/recipelist">Recipes</Link>
+                  </li>
+                  <li className="nav-item">
+                      <Link className="nav-link" to="/add">Add</Link>
+                  </li>
+                  <li className="nav-item me-2">
                     <Button
                       loading={loading}
                       onClick={onLogoutClicked}>
                       Logout
                     </Button>
                   </li>
-                  <li className="nav-item">
-                      <Link className="nav-link" to="/recipelist">Recipes</Link>
-                  </li>
-                  <li className="nav-item">
-                      <Link className="nav-link" to="/recipelist">Add</Link>
-                  </li>
+
                 </>
                 :
                 <>
