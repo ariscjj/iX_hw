@@ -5,20 +5,44 @@ import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-icons/font/bootstrap-icons.css'
 
 import './App.css'; 
+import { auth } from './firebase/firebase';
+
+
+import {
+  BrowserRouter,
+  Routes,
+  Route
+} from 'react-router-dom';
 
 //import the Recipe Service 
 import RecipeService from './services/recipe.service'; 
+import { onAuthStateChanged } from 'firebase/auth';
 
 //import the Recipe class from the models folder 
 import { Recipe } from './models/recipe.js';
+// import RecipeCard from './components/recipes/RecipeCard';
+// import RecipeInput from './components/recipes/RecipeInput'; 
+import RecipePage from './components/recipes/RecipePage';
+import LoginPage from './components/auth/LoginPage';
+import RegisterPage from './components/auth/RegisterPage';
 
-//import components from components folder
-import RecipeCard from './components/RecipeCard';
+import Navbar from './components/common/Navbar';
+import RequireAuth from './components/common/RequireAuth';
+import Spinner from './components/common/Spinner';
 
-import RecipeInput from './components/RecipeInput'; 
+
 
 export default function App() {
   const [recipes, setRecipes] = useState([]);
+  const [user, setUser] =  useState(null);
+  const[isUserUpdated, setIsUserUpdated] = useState(false); 
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      setUser(user); 
+      setIsUserUpdated(true);
+    });
+  },[]); 
 
   useEffect(() => {
     if (!recipes.length){
@@ -43,17 +67,33 @@ export default function App() {
     setRecipes(recipes.filter((recipe) => recipe.id !== recipeId)); 
   }
   return (
-    <div className="container my-5 p-4 text-center">
-      <div className="card card-body">
-        <h1>Cooking in Lisbon</h1>
-        <hr></hr>
-        <p>Here are the recipes that my friends and I have cooked so far in our trip to Lisbon! Feel free to add more.</p>
-        <RecipeInput onRecipeCreate={onRecipeCreate} />
-      </div>
-      <RecipeCard 
-        onRecipeRemove={onRecipeRemove}
-        recipes={recipes} />
-    </div>
+    <BrowserRouter>
+      <Navbar user={user} />
+      {
+        isUserUpdated ?
+          <Routes>
+            <Route path='/' element={
+              <RequireAuth user={user}>
+                <RecipePage />
+              </RequireAuth>
+            } />
+            <Route path='/login' element={<LoginPage />} />
+            <Route path='/register' element={<RegisterPage />} />
+          </Routes>
+          :
+          <div className='mt-3 text-center'>
+            <Spinner />
+          </div>
+      }
+    </BrowserRouter>
+
+
+
+
+
+
+
+
   );
 }
 

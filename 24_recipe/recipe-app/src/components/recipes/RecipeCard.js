@@ -6,7 +6,6 @@ export default function RecipeCard(props){
   return (
   <div>
     { 
-
       props.recipes.map((recipe) => 
 
 // <p>
